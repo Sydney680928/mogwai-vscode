@@ -1,6 +1,6 @@
 # MOGWAI Language Support for Visual Studio Code
 
-Full language support for [MOGWAI](https://www.mogwai.eu.com) — a stack-based RPN scripting engine for .NET inspired by HP RPL calculators (HP 28S, HP 48).
+Full language support for [MOGWAI](https://www.mogwai.eu.com) — a stack-based RPN scripting engine for .NET
 
 ---
 
