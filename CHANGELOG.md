@@ -2,6 +2,12 @@
 
 All notable changes to the **MOGWAI Language Support** extension are documented in this file.
 
+## [1.3.3] - 2026-06-19
+
+### Changed
+- The extension's source code is now open source, hosted in its own dedicated repository: https://github.com/Sydney680928/mogwai-vscode
+- `repository` field in the manifest updated accordingly
+
 ## [1.3.2] - 2026-06-19
 
 ### Added
