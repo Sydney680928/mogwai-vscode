@@ -2,7 +2,7 @@
 
 All notable changes to the **MOGWAI Language Support** extension are documented in this file.
 
-## [1.3.2]
+## [1.3.2] - 2026-06-19
 
 ### Added
 - `post` keyword recognized in syntax highlighting and autocompletion
