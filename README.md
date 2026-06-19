@@ -162,4 +162,4 @@ MOGWAI is a stack-based RPN scripting engine for .NET, inspired by HP RPL (HP 28
 
 → [MOGWAI on GitHub](https://github.com/Sydney680928/mogwai)
 
-→ [Full VS Code integration guide](https://github.com/Sydney680928/mogwai/tree/main/docs/EN/MOGWAI_VSCODE.md)
+→ [Full VS Code integration guide](https://github.com/Sydney680928/mogwai-vscode/tree/main/docs/EN/MOGWAI_VSCODE.md)
