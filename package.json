@@ -1,0 +1,255 @@
+{
+  "name": "mogwai-language",
+  "displayName": "MOGWAI Language Support",
+  "description": "Syntax highlighting, snippets and runtime execution for MOGWAI (.mog files)",
+  "version": "1.3.2",
+  "publisher": "mogwai",
+  "icon": "images/mogwai-icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sydney680928/mogwai"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:mogwai"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "mogwai",
+        "aliases": ["MOGWAI", "mogwai"],
+        "extensions": [".mog"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "mogwai",
+        "scopeName": "source.mogwai",
+        "path": "./syntaxes/mogwai.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "mogwai",
+        "path": "./snippets/mogwai.code-snippets"
+      }
+    ],
+    "commands": [
+      {
+        "command": "mogwai.connectRuntime",
+        "title": "MOGWAI: Connect to Runtime",
+        "icon": "$(plug)"
+      },
+      {
+        "command": "mogwai.runFile",
+        "title": "MOGWAI: Run Current File",
+        "icon": "$(play)"
+      },
+      {
+        "command": "mogwai.disconnectRuntime",
+        "title": "MOGWAI: Disconnect",
+        "icon": "$(debug-disconnect)"
+      },
+      {
+        "command": "mogwai.debugFile",
+        "title": "MOGWAI: Debug Current File",
+        "icon": "$(debug-alt)"
+      },
+      {
+        "command": "mogwai.refreshPanel",
+        "title": "MOGWAI: Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "mogwai.insertFunction",
+        "title": "MOGWAI: Insert Function Call",
+        "icon": "$(symbol-function)"
+      },
+      {
+        "command": "mogwai.pause",
+        "title": "MOGWAI: Pause",
+        "icon": "$(debug-pause)"
+      },
+      {
+        "command": "mogwai.resume",
+        "title": "MOGWAI: Resume",
+        "icon": "$(debug-continue)"
+      },
+      {
+        "command": "mogwai.step",
+        "title": "MOGWAI: Step",
+        "icon": "$(debug-step-over)"
+      },
+      {
+        "command": "mogwai.halt",
+        "title": "MOGWAI: Halt",
+        "icon": "$(stop)"
+      },
+      {
+        "command": "mogwai.refreshPanel",
+        "title": "MOGWAI: Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "mogwai.insertFunction",
+        "title": "MOGWAI: Insert Function Call",
+        "icon": "$(symbol-function)"
+      },
+      {
+        "command": "mogwai.pause",
+        "title": "MOGWAI: Pause",
+        "icon": "$(debug-pause)"
+      },
+      {
+        "command": "mogwai.resume",
+        "title": "MOGWAI: Resume",
+        "icon": "$(debug-continue)"
+      },
+      {
+        "command": "mogwai.step",
+        "title": "MOGWAI: Step",
+        "icon": "$(debug-step-over)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "mogwai.refreshPanel",
+          "when": "view == mogwaiRuntimeView",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "mogwai.insertFunction",
+          "when": "resourceExtname == .mog",
+          "group": "mogwai@1"
+        },
+        {
+          "command": "mogwai.runFile",
+          "when": "resourceExtname == .mog && mogwai.isConnected && mogwai.debugState != running && mogwai.debugState != paused",
+          "group": "mogwai@2"
+        },
+        {
+          "command": "mogwai.debugFile",
+          "when": "resourceExtname == .mog && mogwai.isConnected && mogwai.debugState != running && mogwai.debugState != paused",
+          "group": "mogwai@3"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "mogwai.connectRuntime",
+          "when": "resourceExtname == .mog && !mogwai.isConnected",
+          "group": "navigation@0"
+        },
+        {
+          "command": "mogwai.disconnectRuntime",
+          "when": "resourceExtname == .mog && mogwai.isConnected",
+          "group": "navigation@0"
+        },
+        {
+          "command": "mogwai.runFile",
+          "when": "resourceExtname == .mog && mogwai.isConnected && mogwai.debugState != running && mogwai.debugState != paused",
+          "group": "navigation@1"
+        },
+        {
+          "command": "mogwai.debugFile",
+          "when": "resourceExtname == .mog && mogwai.isConnected && mogwai.debugState != running && mogwai.debugState != paused",
+          "group": "navigation@2"
+        },
+        {
+          "command": "mogwai.halt",
+          "when": "resourceExtname == .mog && mogwai.debugState != idle",
+          "group": "navigation@3"
+        },
+        {
+          "command": "mogwai.pause",
+          "when": "resourceExtname == .mog && mogwai.debugState == running && mogwai.isDebugging",
+          "group": "navigation@4"
+        },
+        {
+          "command": "mogwai.step",
+          "when": "resourceExtname == .mog && mogwai.debugState == paused",
+          "group": "navigation@4"
+        },
+        {
+          "command": "mogwai.resume",
+          "when": "resourceExtname == .mog && mogwai.debugState == paused",
+          "group": "navigation@5"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "mogwai-explorer",
+          "title": "MOGWAI",
+          "icon": "images/mogwai-icon.png"
+        }
+      ]
+    },
+    "views": {
+      "mogwai-explorer": [
+        {
+          "id": "mogwaiRuntimeView",
+          "name": "Runtime",
+          "when": "mogwai.isConnected"
+        }
+      ]
+    },
+    "semanticTokenTypes": [
+      {
+        "id": "localFunction",
+        "superType": "function",
+        "description": "Locally declared MOGWAI function call"
+      }
+    ],
+    "semanticTokenScopes": [
+      {
+        "language": "mogwai",
+        "scopes": {
+          "localFunction": ["entity.name.function"]
+        }
+      }
+    ],
+    "configuration": {
+      "title": "MOGWAI",
+      "properties": {
+        "mogwai.runtime.udpPort": {
+          "type": "number",
+          "default": 1968,
+          "description": "UDP port used to discover MOGWAI runtimes on the network"
+        },
+        "mogwai.runtime.discoveryTimeoutMs": {
+          "type": "number",
+          "default": 2000,
+          "description": "How long (ms) to wait for runtime responses after UDP broadcast"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "typescript": "^5.3.0"
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "if / then": {
+    "prefix": "if",
+    "body": [
+      "if (${1:condition}) then",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Conditional block"
+  },
+
+  "if / then / else": {
+    "prefix": "ife",
+    "body": [
+      "if (${1:condition}) then",
+      "{",
+      "\t$2",
+      "}",
+      "else",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Conditional block with else"
+  },
+
+  "while / do": {
+    "prefix": "while",
+    "body": [
+      "while (${1:condition}) do",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "While loop"
+  },
+
+  "do / while": {
+    "prefix": "dowhile",
+    "body": [
+      "do",
+      "{",
+      "\t$0",
+      "}",
+      "while (${1:condition})"
+    ],
+    "description": "Do/while loop"
+  },
+
+  "for": {
+    "prefix": "for",
+    "body": [
+      "${1:1} ${2:10} for '${3:i}' do",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "For loop with counter variable"
+  },
+
+  "for with step": {
+    "prefix": "fors",
+    "body": [
+      "${1:1} ${2:10} for '${3:i}' step ${4:2} do",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "For loop with step"
+  },
+
+  "repeat": {
+    "prefix": "repeat",
+    "body": [
+      "${1:10} repeat",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Repeat N times"
+  },
+
+  "forever": {
+    "prefix": "forever",
+    "body": [
+      "forever do",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Infinite loop"
+  },
+
+  "foreach / do": {
+    "prefix": "foreach",
+    "body": [
+      "${1:list} foreach '${2:item}' do",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Foreach loop"
+  },
+
+  "foreach / transform": {
+    "prefix": "transform",
+    "body": [
+      "${1:list} foreach '${2:item}' transform",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Foreach transform (map)"
+  },
+
+  "foreach / filter": {
+    "prefix": "filter",
+    "body": [
+      "${1:list} foreach '${2:item}' filter",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Foreach filter"
+  },
+
+  "switch": {
+    "prefix": "switch",
+    "body": [
+      "switch",
+      "{",
+      "\t(${1:condition1}) then { $2 }",
+      "\t(${3:condition2}) then { $0 }",
+      "}"
+    ],
+    "description": "Switch block"
+  },
+
+  "function (simple)": {
+    "prefix": "to",
+    "body": [
+      "to '${1:name}' do",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Function declaration"
+  },
+
+  "function (with typed params)": {
+    "prefix": "tow",
+    "body": [
+      "to '${1:name}' with [${2:x}: .${3:number}] do",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Function declaration with typed parameters (no defaults)"
+  },
+
+  "function (with default params)": {
+    "prefix": "top",
+    "body": [
+      "to '${1:name}' params [${2:x}: (.${3:number} ${4:0})] do",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Function declaration with parameters and default values"
+  },
+
+  "variable store (variant)": {
+    "prefix": "store",
+    "body": "${1:value} -> '${2:name}'",
+    "description": "Store value in a variant variable"
+  },
+
+  "variable store (typed)": {
+    "prefix": "storet",
+    "body": "${1:value} => '${2:name}'",
+    "description": "Store value in a type-locked variable"
+  },
+
+  "string interpolation": {
+    "prefix": "interp",
+    "body": "\"${1:text} {! ${2:expression} }\"",
+    "description": "String with interpolation block"
+  }
+}

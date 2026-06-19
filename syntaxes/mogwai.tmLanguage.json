@@ -1,0 +1,141 @@
+{
+  "name": "MOGWAI",
+  "scopeName": "source.mogwai",
+  "fileTypes": ["mog"],
+  "patterns": [
+    { "include": "#comment"   },
+    { "include": "#string"    },
+    { "include": "#varname"   },
+    { "include": "#number"    },
+    { "include": "#constant"  },
+    { "include": "#sigil"     },
+    { "include": "#store"     },
+    { "include": "#control"   },
+    { "include": "#delimiter" }
+  ],
+  "repository": {
+
+    "comment": {
+      "name": "comment.line.number-sign.mogwai",
+      "match": "#.*$"
+    },
+
+    "string": {
+      "name": "string.quoted.double.mogwai",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "meta.interpolation.mogwai",
+          "begin": "\\{!",
+          "end": "\\}",
+          "beginCaptures": {
+            "0": { "name": "punctuation.section.interpolation.begin.mogwai" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.section.interpolation.end.mogwai" }
+          },
+          "patterns": [
+            { "include": "$self" }
+          ]
+        },
+        {
+          "name": "constant.character.escape.mogwai",
+          "match": "\\\\."
+        }
+      ]
+    },
+
+    "varname": {
+      "name": "variable.other.mogwai",
+      "match": "'[^']+'"
+    },
+
+    "number": {
+      "patterns": [
+        {
+          "name": "constant.numeric.hex.mogwai",
+          "match": "\\b0[xX][0-9a-fA-F]+\\b"
+        },
+        {
+          "name": "constant.numeric.mogwai",
+          "match": "\\b-?\\d+(\\.\\d+)?\\b"
+        }
+      ]
+    },
+
+    "constant": {
+      "name": "constant.language.mogwai",
+      "match": "\\b(true|false|null|empty)\\b"
+    },
+
+    "sigil": {
+      "patterns": [
+        {
+          "name": "storage.modifier.reference.mogwai",
+          "match": "&[A-Za-z_][A-Za-z0-9_]*"
+        },
+        {
+          "name": "storage.modifier.static.mogwai",
+          "match": "@[A-Za-z_][A-Za-z0-9_]*"
+        },
+        {
+          "name": "storage.modifier.eval.mogwai",
+          "match": "![A-Za-z_][A-Za-z0-9_]*"
+        },
+        {
+          "name": "keyword.operator.eval.mogwai",
+          "match": "!(?![A-Za-z_])"
+        }
+      ]
+    },
+
+    "store": {
+      "patterns": [
+        {
+          "name": "keyword.operator.pipeline.mogwai",
+          "match": "-->"
+        },
+        {
+          "name": "keyword.operator.store-compound.mogwai",
+          "match": "->[+\\-*/]"
+        },
+        {
+          "name": "keyword.operator.store-typed.mogwai",
+          "match": "=>"
+        },
+        {
+          "name": "keyword.operator.store.mogwai",
+          "match": "(?<!-)->(?![>+\\-*/a-zA-Z0-9_])"
+        }
+      ]
+    },
+
+    "control": {
+      "name": "keyword.control.mogwai",
+      "match": "\\b(if|then|else|repeat|while|to|with|params|do|for|step|foreach|timer|every|after|guard|trap|onEvent|forever|switch|during|task|send|start|returns|transform|filter|class|post)\\b"
+    },
+
+    "delimiter": {
+      "patterns": [
+        {
+          "name": "punctuation.definition.function.mogwai",
+          "match": "[«»]"
+        },
+        {
+          "name": "punctuation.definition.block.mogwai",
+          "match": "[{}]"
+        },
+        {
+          "name": "punctuation.definition.record.mogwai",
+          "match": "[\\[\\]]"
+        },
+        {
+          "name": "punctuation.definition.list.mogwai",
+          "match": "[()]"
+        }
+      ]
+    }
+
+  }
+}
