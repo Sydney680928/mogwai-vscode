@@ -2,6 +2,11 @@
 
 All notable changes to the **MOGWAI Language Support** extension are documented in this file.
 
+## [1.3.4] - 2026-06-20
+
+### Fixed
+- Function declarations using only a `returns (...)` clause (without `with` or `params`) are now reliably recognized by the Outline, Go to Definition, and local function coloring
+
 ## [1.3.3] - 2026-06-19
 
 ### Changed
